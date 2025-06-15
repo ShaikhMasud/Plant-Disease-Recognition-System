@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AgroScan - Plant Disease Detector</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1fdf6;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: #198754;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h1, h2, h3 {
+            color: #1c3b2a;
+        }
+
+        .intro {
+            background-color: #e7f8ee;
+            padding: 25px;
+            border-left: 6px solid #198754;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-left: 6px solid #ffc107;
+            margin: 30px 0;
+            border-radius: 8px;
+            color: #856404;
+        }
+
+        .sample-imgs {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .img-box {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .img-box img {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .caption {
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .btn {
+            background-color: #198754;
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            background-color: #157347;
+        }
+
+        .footer-note {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="/">AgroScan</a>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to AgroScan</h1>
+        <div class="intro">
+            <p><strong>AgroScan</strong> is an AI-powered plant disease detection tool trained using TensorFlow and the open-source <strong>PlantVillage dataset</strong>. Using an advanced <strong>EfficientNetV2 model</strong> and transfer learning, the system achieves over <strong>96% accuracy</strong> in identifying various leaf diseases across different crops.</p>
+            <p>This platform empowers farmers and agricultural experts with rapid, accurate diagnostics to protect crops and minimize damage. Upload a clean image of a single leaf against a plain background to get reliable results.</p>
+        </div>
+
+        <div class="info-box">
+            ⚠️ This system only supports individual leaf images taken against a plain background. Avoid tree images with multiple leaves or natural outdoor scenes.
+        </div>
+
+        <h3>Correct vs Incorrect Image Examples</h3>
+        <div class="sample-imgs">
+            <div class="img-box">
+                <img src="{{ url_for('static', filename='correct_sample.jpg') }}" alt="Correct Image">
+                <div class="caption">✅ Correct Image: Single leaf, plain background.</div>
+            </div>
+            <div class="img-box">
+                <img src="{{ url_for('static', filename='incorrect_sample.jpg') }}" alt="Incorrect Image">
+                <div class="caption">❌ Incorrect Image: Many leaves, natural background.</div>
+            </div>
+        </div>
+
+        <h3>Supported Plant Diseases</h3>
+<table>
+    <tr>
+        <th>Plant</th>
+        <th>Disease</th>
+    </tr>
+    <tr><td>Apple</td><td>Apple Scab</td></tr>
+    <tr><td>Apple</td><td>Black Rot</td></tr>
+    <tr><td>Apple</td><td>Cedar Apple Rust</td></tr>
+    <tr><td>Apple</td><td>Healthy</td></tr>
+    <tr><td>Blueberry</td><td>Healthy</td></tr>
+    <tr><td>Cherry</td><td>Powdery Mildew</td></tr>
+    <tr><td>Cherry</td><td>Healthy</td></tr>
+    <tr><td>Corn</td><td>Cercospora Leaf Spot (Gray Leaf Spot)</td></tr>
+    <tr><td>Corn</td><td>Common Rust</td></tr>
+    <tr><td>Corn</td><td>Northern Leaf Blight</td></tr>
+    <tr><td>Corn</td><td>Healthy</td></tr>
+    <tr><td>Grape</td><td>Black Rot</td></tr>
+    <tr><td>Grape</td><td>Esca (Black Measles)</td></tr>
+    <tr><td>Grape</td><td>Leaf Blight (Isariopsis Leaf Spot)</td></tr>
+    <tr><td>Grape</td><td>Healthy</td></tr>
+    <tr><td>Orange</td><td>Haunglongbing (Citrus Greening)</td></tr>
+    <tr><td>Peach</td><td>Bacterial Spot</td></tr>
+    <tr><td>Peach</td><td>Healthy</td></tr>
+    <tr><td>Pepper (Bell)</td><td>Bacterial Spot</td></tr>
+    <tr><td>Pepper (Bell)</td><td>Healthy</td></tr>
+    <tr><td>Potato</td><td>Early Blight</td></tr>
+    <tr><td>Potato</td><td>Late Blight</td></tr>
+    <tr><td>Potato</td><td>Healthy</td></tr>
+    <tr><td>Raspberry</td><td>Healthy</td></tr>
+    <tr><td>Soybean</td><td>Healthy</td></tr>
+    <tr><td>Squash</td><td>Powdery Mildew</td></tr>
+    <tr><td>Strawberry</td><td>Leaf Scorch</td></tr>
+    <tr><td>Strawberry</td><td>Healthy</td></tr>
+    <tr><td>Tomato</td><td>Bacterial Spot</td></tr>
+    <tr><td>Tomato</td><td>Early Blight</td></tr>
+    <tr><td>Tomato</td><td>Late Blight</td></tr>
+    <tr><td>Tomato</td><td>Leaf Mold</td></tr>
+    <tr><td>Tomato</td><td>Septoria Leaf Spot</td></tr>
+    <tr><td>Tomato</td><td>Spider Mites (Two-Spotted Spider Mite)</td></tr>
+    <tr><td>Tomato</td><td>Target Spot</td></tr>
+    <tr><td>Tomato</td><td>Tomato Yellow Leaf Curl Virus</td></tr>
+    <tr><td>Tomato</td><td>Tomato Mosaic Virus</td></tr>
+    <tr><td>Tomato</td><td>Healthy</td></tr>
+</table>
+
+
+        <div style="text-align:center;">
+            <a href="/upload/" class="btn">Try Image Prediction</a>
+        </div>
+
+        <p class="footer-note">Ensure images are sharp, well-lit, and contain only a single leaf for accurate results.</p>
+    </div>
+</body>
+</html>

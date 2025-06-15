@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AgroScan - Upload</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #198754;
+            padding: 1rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            padding: 40px 20px;
+        }
+
+        .btn {
+            background-color: #198754;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .form-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .result-container {
+            margin-top: 40px;
+        }
+
+        .result-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 700px;
+            margin: auto;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+        }
+
+        .result-img-container {
+            text-align: center;
+        }
+
+        .result-img-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .result-text {
+            text-align: left;
+        }
+
+        .result-text h3 {
+            color: #198754;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            color: #333;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .section-text {
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="/">AgroScan</a>
+    </nav>
+
+    <div class="container">
+        <div class="form-box">
+            <form action="/upload/" method="POST" enctype="multipart/form-data">
+                <h1>Upload Image</h1>
+                <input type="file" accept="image/png, image/jpeg" name="img" required>
+                <div style="margin-top: 20px; text-align: center;">
+                    <button type="submit" class="btn">Upload</button>
+                </div>
+            </form>
+        </div>
+
+        {% if result %}
+        <div class="result-container">
+            <div class="result-box">
+                <div class="result-img-container">
+                    <img src="{{imagepath}}" alt="uploaded image" class="result-image">
+                </div>
+                <div class="result-text">
+                    <h3>{{ prediction['name'] }}</h3>
+
+{% if prediction['name'] == "Background_without_leaves" %}
+    <p class="section-text" style="text-align: center; font-style: italic; margin-top: 10px;">
+        This image does not appear to contain a recognizable plant leaf.<br>
+        Please upload a clear image of a single leaf against a plain background.
+    </p>
+{% else %}
+    <div class="section-title">Cause</div>
+    <p class="section-text">{{ prediction['cause'] }}</p>
+
+    <div class="section-title">Cure</div>
+    <p class="section-text">{{ prediction['cure'] }}</p>
+{% endif %}
+
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div style="margin: 30px auto 60px auto; max-width: 700px; text-align: left;">
+    <a href="/" class="btn">Back</a>
+</div>
+</body>
+</html>
