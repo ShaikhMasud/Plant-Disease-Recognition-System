@@ -29,25 +29,33 @@ We followed the two-step **Transfer Learning** approach as recommended by Tensor
 1. **Feature Extraction**: We froze the base EfficientNetB4 model and trained only the top classifier layers.
 2. **Fine-tuning**: We unfroze the top layers of the base model and trained it together with the classifier for improved performance.
 
-📚 Refer to the TensorFlow Doc here:
+📚 Refer to the TensorFlow Documentation here:
 👉 [Transfer Learning with TensorFlow](https://www.tensorflow.org/tutorials/images/transfer_learning)
 
 ---
 
 ## 📈 Model Performance and Statistics
 
-The model achieved 97% accuracy on test data thanks to:
+This model achieved 97% accuracy on test data by:
 
 * Preprocessing with data augmentation
 * Early stopping and learning rate scheduling
 * Fine-tuned EfficientNetB4 architecture
 
-Google collab link:[Code for training Model](https://colab.research.google.com/drive/1M60m6lwKBTm5QwZVlnmYic2h7s93NNbc?usp=sharing)
+Google collab link for traing the Model:(https://colab.research.google.com/drive/1M60m6lwKBTm5QwZVlnmYic2h7s93NNbc?usp=sharing)
+
+
 
 Stats of training the model:
+
+
 ![image](https://github.com/user-attachments/assets/02466803-67ad-4a54-8dd5-be932c2cbbec)
 
+
+
 Model Architecture:
+
+
 ![image](https://github.com/user-attachments/assets/1899ba9d-d8a6-4b51-ad8f-ee1315d7a421)
 
 ---
@@ -130,5 +138,3 @@ Contributions, suggestions, and improvements are welcome!
 This project is open source and available under the [MIT License](LICENSE).
 
 ---
-
-Let me know if you want this converted into a `README.md` file directly or want to embed specific image examples.
