@@ -138,11 +138,6 @@ The actual trained `.keras` model file (≈208MB) is **not included** in this Gi
 
 ---
 
-## 🤝 Contributing
-
-Contributions, suggestions, and improvements are welcome!
-
----
 
 ## 📜 License
 
