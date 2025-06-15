@@ -20,6 +20,12 @@ This project demonstrates a practical application of computer vision in agricult
 
 We used the **PlantVillage** dataset, which contains **39 classes** representing both **diseased** and **healthy** plant leaf images. All images in this dataset are of **single leaves on a plain background** — ideal for controlled environment recognition.
 
+Some Images of traing Data:
+
+
+![image](https://github.com/user-attachments/assets/643a1217-6f90-40ec-861b-a8096aedd3e2)
+
+
 ⚠️ **Note:** The model may not work well with real-world tree or plant images that have multiple leaves or complex backgrounds.
 
 ### 🧠 Transfer Learning Process
@@ -66,8 +72,12 @@ The Flask app provides a minimal and intuitive UI:
 
 ### 1. **Home Page**
 Description:
+
+
 ![image](https://github.com/user-attachments/assets/a1a02fa8-78eb-4803-a4af-b99217aa441d)
 Supported Diseases:
+
+
 ![image](https://github.com/user-attachments/assets/c03d10ed-acb8-45d9-8f78-1abc46722935)
 ![image](https://github.com/user-attachments/assets/2f8a9348-cb6f-42a9-9855-684128991e09)
 
@@ -75,6 +85,7 @@ Supported Diseases:
 
 Landing page:
 ![image](https://github.com/user-attachments/assets/23275761-ecd9-4f26-a1e3-9bf8c12bfd73)
+
 
 Output:
 ![image](https://github.com/user-attachments/assets/479fda4a-a6d7-45eb-bfae-ed73b76a2f84)
