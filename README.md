@@ -29,20 +29,26 @@ We followed the two-step **Transfer Learning** approach as recommended by Tensor
 1. **Feature Extraction**: We froze the base EfficientNetB4 model and trained only the top classifier layers.
 2. **Fine-tuning**: We unfroze the top layers of the base model and trained it together with the classifier for improved performance.
 
-📚 Refer to the TensorFlow guide here:
+📚 Refer to the TensorFlow Doc here:
 👉 [Transfer Learning with TensorFlow](https://www.tensorflow.org/tutorials/images/transfer_learning)
 
 ---
 
 ## 📈 Model Performance and Statistics
 
-The model achieved **high accuracy** on validation data thanks to:
+The model achieved 97% accuracy on test data thanks to:
 
 * Preprocessing with data augmentation
 * Early stopping and learning rate scheduling
 * Fine-tuned EfficientNetB4 architecture
 
-📌 *Add some training/validation accuracy/loss plots here if available (e.g., from TensorBoard or Matplotlib)*
+Google collab link:[Code for training Model](https://colab.research.google.com/drive/1M60m6lwKBTm5QwZVlnmYic2h7s93NNbc?usp=sharing)
+
+Stats of training the model:
+![image](https://github.com/user-attachments/assets/02466803-67ad-4a54-8dd5-be932c2cbbec)
+
+Model Architecture:
+![image](https://github.com/user-attachments/assets/1899ba9d-d8a6-4b51-ad8f-ee1315d7a421)
 
 ---
 
@@ -51,15 +57,20 @@ The model achieved **high accuracy** on validation data thanks to:
 The Flask app provides a minimal and intuitive UI:
 
 ### 1. **Home Page**
-
-* Project description and purpose.
-* Encourages users to try uploading their own leaf images.
+Description:
+![image](https://github.com/user-attachments/assets/a1a02fa8-78eb-4803-a4af-b99217aa441d)
+Supported Diseases:
+![image](https://github.com/user-attachments/assets/c03d10ed-acb8-45d9-8f78-1abc46722935)
+![image](https://github.com/user-attachments/assets/2f8a9348-cb6f-42a9-9855-684128991e09)
 
 ### 2. **Upload Page**
 
-* Upload a `.jpg`, `.png`, or `.jpeg` image of a single leaf.
-* On submission, the model predicts the disease or healthy status of the leaf.
-* The result is shown on the same page with the **predicted class label**.
+Landing page:
+![image](https://github.com/user-attachments/assets/23275761-ecd9-4f26-a1e3-9bf8c12bfd73)
+
+Output:
+![image](https://github.com/user-attachments/assets/479fda4a-a6d7-45eb-bfae-ed73b76a2f84)
+
 
 ---
 
@@ -98,12 +109,6 @@ The actual trained `.keras` model file (≈208MB) is **not included** in this Gi
    ```
 
 5. Open your browser and go to `http://127.0.0.1:5000`.
-
----
-
-## 📷 Sample Inputs & Outputs
-
-*Include a few example input leaf images and the corresponding predictions made by the model.*
 
 ---
 
