@@ -1,7 +1,3 @@
-Here's a professional and clear **README** for your Plant Disease Recognition System project:
-
----
-
 # 🌿 Plant Disease Recognition System
 
 This project uses **EfficientNetB4** and **Transfer Learning** to detect plant diseases from images of individual leaves. It is built using **TensorFlow**, trained on the **PlantVillage dataset**, and deployed as a **Flask web application**.
